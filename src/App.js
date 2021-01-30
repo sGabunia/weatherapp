@@ -1,24 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import WeekDay from "./components/WeekDay";
+import Day from "./components/Day";
+import "./css/App.css";
+import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  const location = "Rome";
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  const api_key = `37cd8835731a4a30b6d920ffaeb032ee`;
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        `https://api.weatherbit.io/v2.0/forecast/daily?city=${location}&days=5&key=${api_key}`
+      )
+      .then((response) => {
+        setData(response.data.data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <h2>...</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <div className="app">
+            <div className="hero">
+              <Header daysCount={data.length} city={location} />
+              <ul className="weekdays">
+                {data.map((day, i) => (
+                  <WeekDay key={i} dailyWeather={day} />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Route>
+        <Route path="/day/:id">
+          <Day weather={data} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

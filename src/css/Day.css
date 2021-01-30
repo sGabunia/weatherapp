@@ -1,0 +1,23 @@
+section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.day-main-data {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.day-wind-data {
+  padding-left: 1rem;
+  border-left: 2px solid pink;
+}
+
+section img {
+  width: 70px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
