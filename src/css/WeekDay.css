@@ -1,0 +1,29 @@
+.weekday {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  transition: background-color 0.4s ease;
+}
+
+.weekday:hover {
+  background-color: rgb(245, 243, 243);
+}
+
+.weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 60%;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weekday img {
+  width: 40px;
+}
