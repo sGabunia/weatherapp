@@ -30,6 +30,7 @@ const Day = ({ weather }) => {
         </h1>
         <div className="day-main-data">
           <img
+            className="icon"
             src={`https://www.weatherbit.io/static/img/icons/${icon}.png`}
             alt="weather"
           />
@@ -58,13 +59,20 @@ const Day = ({ weather }) => {
             Wind direction: <strong>{wind_cdir_full}</strong>{" "}
           </p>
         </div>
-        <Link to="/">
-          <img
-            src="https://img.icons8.com/ios/50/000000/circled-left-2.png"
-            alt="back arrow button"
-            style={{ margin: "1rem auto", cursor: "pointer" }}
-          />
-        </Link>
+        <div className="back">
+          <Link to="/">
+            <img
+              style={{
+                margin: "1rem auto",
+                cursor: "pointer",
+                display: "inline-block",
+              }}
+              className="back-arrow"
+              src="https://img.icons8.com/ios/50/000000/circled-left-2.png"
+              alt="back arrow button"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );
