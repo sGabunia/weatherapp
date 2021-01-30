@@ -16,7 +16,12 @@ section {
   border-left: 2px solid pink;
 }
 
-section img {
+.back {
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
   width: 70px;
   object-fit: cover;
   margin-right: 1rem;
